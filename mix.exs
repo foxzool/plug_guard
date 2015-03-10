@@ -1,14 +1,24 @@
 defmodule PlugGuard.Mixfile do
   use Mix.Project
 
+  @version "0.0.1"
+  @github_url "https://github.com/foxzool/plug_guard"
+  @description """
+  A plug server for oauth2
+  """
+
   def project do
-    [app: :plug_guard,
-     version: "0.0.1",
-     elixir: "~> 1.0",
-     name: "PlugGuard",
-     source_url: "https://github.com/foxzool/plug_guard",
-     homepage_url: "https://github.com/foxzool/plug_guard",
-     deps: deps]
+    [
+      app: :plug_guard,
+      version: @version,
+      elixir: "~> 1.0",
+      name: "PlugGuard",
+      source_url: @github_url,
+      description: @description,
+      deps: deps,
+      package: package,
+      docs: [readme: "README.md", main: "README"]
+    ]
   end
 
   # Configuration for the OTP application
@@ -31,8 +41,16 @@ defmodule PlugGuard.Mixfile do
     [
       {:cowboy, "~> 1.0.0"},
       {:plug, "~> 0.11.0"},
-      {:earmark, "~> 0.1", only: :docs},
-      {:ex_doc, "~> 0.6", only: :docs},
+      {:earmark, "~> 0.1", only: :dev},
+      {:ex_doc, "~> 0.6", only: :dev},
+    ]
+  end
+
+  defp package do
+    [
+      contributors: ["Fox ZoOL"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => @github_url}
     ]
   end
 end
