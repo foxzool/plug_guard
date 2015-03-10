@@ -1,8 +1,20 @@
 defmodule PlugGuard do
-  use Application
+  @default_path "/oauth"
 
-  @doc false
-  def start(_type, _args) do
-    PlugGuard.Supervisor.start_link()
+  import Plug.Conn
+  use Plug.Router
+
+  plug Plug.Logger
+  plug :match
+  plug :dispatch
+
+  post @default_path <> "/token" do
+    conn = fetch_params(conn)
+
+    IO.inspect conn.params
+
+    body = PlugGuard.Server.authorize_response(conn)
+    IO.inspect body
+    send_resp(conn, 200, "hello")
   end
 end
