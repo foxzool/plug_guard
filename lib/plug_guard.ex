@@ -9,12 +9,8 @@ defmodule PlugGuard do
   plug :dispatch
 
   post @default_path <> "/token" do
-    conn = fetch_params(conn)
-
-    IO.inspect conn.params
-
-    body = PlugGuard.Server.authorize_response(conn)
-    IO.inspect body
-    send_resp(conn, 200, "hello")
+    conn
+    |> PlugGuard.Server.call
+    |> send_resp(200, "hello")
   end
 end

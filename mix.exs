@@ -41,6 +41,7 @@ defmodule PlugGuard.Mixfile do
     [
       {:cowboy, "~> 1.0.0"},
       {:plug, "~> 0.11.0"},
+      {:pipe, "~> 0.0.1"},
       {:earmark, "~> 0.1", only: :dev},
       {:ex_doc, "~> 0.6", only: :dev},
     ]

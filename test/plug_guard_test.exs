@@ -4,9 +4,11 @@ defmodule PlugGuardTest do
 
   @default_path "/oauth"
 
-  test "the truth" do
-    params = %{"grant_type" => "password",
-      "username" => "John", 
+  test ". truth" do
+    params = %{
+      "grant_type" => "Password",
+      "Username" => "Jone",
+      "password" => "changeme"
     }
   conn = conn(:post, @default_path <> "/token", params)
 
